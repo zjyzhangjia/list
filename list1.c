@@ -2,20 +2,20 @@
 #include <stdlib.h>
 
 struct Node{
-	int data;  //Êı¾İÓò
-	struct Node* next;  //Ö¸ÕëÓò
+	int data;  //æ•°æ®åŸŸ
+	struct Node* next;  //æŒ‡é’ˆåŸŸ
 };
 
-struct Node* creatList()  //´´½¨ÁĞ±í
+struct Node* creatList()  //åˆ›å»ºåˆ—è¡¨
 {
-	struct Node* headNode = (struct Node*)malloc(sizeof(struct Node));//¶¯Ì¬ÄÚ´æÉêÇë£¬headNode³ÉÎª½á¹¹Ìå±äÁ¿
-	//±äÁ¿Ê¹ÓÃÇ°³õÊ¼»¯
+	struct Node* headNode = (struct Node*)malloc(sizeof(struct Node));//åŠ¨æ€å†…å­˜ç”³è¯·ï¼ŒheadNodeæˆä¸ºç»“æ„ä½“å˜é‡
+	//å˜é‡ä½¿ç”¨å‰åˆå§‹åŒ–
 	//headNode->data = 1;
 	headNode->next = NULL;
 	return headNode;
 };
 
-struct Node* creatNode(int data)  //´´½¨½Úµã
+struct Node* creatNode(int data)  //åˆ›å»ºèŠ‚ç‚¹
 {
 	struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
 	newNode->data = data;
@@ -23,10 +23,10 @@ struct Node* creatNode(int data)  //´´½¨½Úµã
 	return newNode;
 }
 
-void printList(struct Node* headNode)  //Ö´ĞĞÀ¨ºÅÄÚµÄÄÚÈİÃ»ÓĞ·µ»ØÖµ,±éÀú½Úµã
+void printList(struct Node* headNode)  //æ‰§è¡Œæ‹¬å·å†…çš„å†…å®¹æ²¡æœ‰è¿”å›å€¼,éå†èŠ‚ç‚¹
 {
 	struct Node* pMove = headNode->next;
-	while (pMove)//µ±½Úµã²»Îª¿ÕÔò¿ªÊ¼´òÓ¡
+	while (pMove)//å½“èŠ‚ç‚¹ä¸ä¸ºç©ºåˆ™å¼€å§‹æ‰“å°
 	{
 		printf("%d\t", pMove->data);
 		pMove = pMove->next;
@@ -34,37 +34,37 @@ void printList(struct Node* headNode)  //Ö´ĞĞÀ¨ºÅÄÚµÄÄÚÈİÃ»ÓĞ·µ»ØÖµ,±éÀú½Úµã
 	printf("\n");
 }
 
-//²åÈë½Úµã£¬²ÎÊı£º²åÈëÄÇ¸öÁ´±í£¬²åÈë½ÚµãµÄÊı¾İÊÇ¶àÉÙ£¬²ÉÓÃÍ·²å
+//æ’å…¥èŠ‚ç‚¹ï¼Œå‚æ•°ï¼šæ’å…¥é‚£ä¸ªé“¾è¡¨ï¼Œæ’å…¥èŠ‚ç‚¹çš„æ•°æ®æ˜¯å¤šå°‘ï¼Œé‡‡ç”¨å¤´æ’
 void insertNodeByHead(struct Node* headNode, int data)
 {
-	//1´´½¨²åÈë½Úµã
+	//1åˆ›å»ºæ’å…¥èŠ‚ç‚¹
 	struct Node* newNode = creatNode(data);
-	//²»ÄÜ²åµ½headNodeÇ°Ãæ
+	//ä¸èƒ½æ’åˆ°headNodeå‰é¢
 	newNode->next = headNode->next;
 	headNode->next = newNode;
 }
 
-//É¾³ı½Úµã
+//åˆ é™¤èŠ‚ç‚¹
 void deletNodeByAppoin(struct Node* headNode,int posData)
 {
 	struct Node* posNode = headNode->next;
 	struct Node* posNodeFront = headNode;
-	if (posNode == NULL)//ÅĞ¶ÏÁĞ±íÊÇ·ñÎª¿Õ
-		printf("ÎŞ·¨É¾³ıÁĞ±íÎª¿Õ\n");
+	if (posNode == NULL)//åˆ¤æ–­åˆ—è¡¨æ˜¯å¦ä¸ºç©º
+		printf("æ— æ³•åˆ é™¤åˆ—è¡¨ä¸ºç©º\n");
 	else
 	{
 		while (posNode->data != posData)
 		{
 			posNodeFront = posNode;
 			posNode = posNode->next;
-			if (posNode==NULL)//ËµÃ÷ÕÒµ½ÁË±íÎ²
+			if (posNode==NULL)//è¯´æ˜æ‰¾åˆ°äº†è¡¨å°¾
 			{
-				printf("Ã»ÓĞÕÒµ½Ïà¹ØĞÅÏ¢£¬ÎŞ·¨É¾³ı\n");
+				printf("æ²¡æœ‰æ‰¾åˆ°ç›¸å…³ä¿¡æ¯ï¼Œæ— æ³•åˆ é™¤\n");
 				return;
 			}
 		}
 		posNodeFront->next = posNode->next;
-		free(posNode);//ÓÃfreeÉ¾³ıposNode½Úµã
+		free(posNode);//ç”¨freeåˆ é™¤posNodeèŠ‚ç‚¹
 	}
 }
 
@@ -72,11 +72,11 @@ void deletNodeByAppoin(struct Node* headNode,int posData)
 
 int main()
 {
-	//struct Node Node1 = { 1, NULL };   //1ÊÇÊı¾İ£¬nullÊÇÖ¸Õë
+	//struct Node Node1 = { 1, NULL };   //1æ˜¯æ•°æ®ï¼Œnullæ˜¯æŒ‡é’ˆ
 	//struct Node Node2 = { 2, NULL };
-	//struct Node Node3 = { 3, NULL };    //½á¹¹Ìå±äÁ¿
-	//Node1.next = &Node2;   //½«Node1µÄÖ¸ÕëÖ¸ÏòNode2
-	//Node2.next = &Node3;   //½«Node2µÄÖ¸ÕëÖ¸ÏòNode3,....¾²Ì¬ÁĞ±í
+	//struct Node Node3 = { 3, NULL };    //ç»“æ„ä½“å˜é‡
+	//Node1.next = &Node2;   //å°†Node1çš„æŒ‡é’ˆæŒ‡å‘Node2
+	//Node2.next = &Node3;   //å°†Node2çš„æŒ‡é’ˆæŒ‡å‘Node3,....é™æ€åˆ—è¡¨
 	struct Node* list = creatList();
 	insertNodeByHead(list, 1);
 	insertNodeByHead(list, 2);
